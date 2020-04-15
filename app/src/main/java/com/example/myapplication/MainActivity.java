@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.view.View;
@@ -49,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick (View v) {
                 getAPI();
+                bam.setVisibility(View.VISIBLE);
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        bam.setVisibility(View.INVISIBLE);
+                    }
+                }, 500);
             }
         });
         getAPI();
@@ -86,6 +96,6 @@ public class MainActivity extends AppCompatActivity {
             mJoke.setText("Error 69");
         }
         bam.clearAnimation();
-        bam.setVisibility(View.GONE);
+        bam.setVisibility(View.INVISIBLE);
     }
 }
